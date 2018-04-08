@@ -63,4 +63,16 @@ class RomanConverterTest {
         assertThat(convertedValue).isEqualTo("V")
     }
 
+    @Test
+    fun `convert 11 return XI`(){
+        val convertedValue = RomanConverter().convert(11)
+        assertThat(convertedValue).isEqualTo("XI")
+    }
+
+    @Test
+    fun `convert 25 return XXV`(){
+        val convertedValue = RomanConverter().convert(25)
+        assertThat(convertedValue).isEqualTo("XXV")
+    }
+
 }
