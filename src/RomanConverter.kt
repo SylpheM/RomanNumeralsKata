@@ -6,6 +6,7 @@ class RomanConverter {
             return "${convertTens(tens)}${convert(inputNumber - tens * 10)}"
         }
         return when(inputNumber){
+            0 -> ""
             1 -> "I"
             2 -> "II"
             3 -> "III"
@@ -21,8 +22,17 @@ class RomanConverter {
     }
 
     fun convertTens(inputNumber: Int) : String {
+        var remainingNumber = inputNumber
         var output = ""
-        for (i in 1 .. inputNumber)
+        if(remainingNumber >= 10){
+            remainingNumber -= 10
+            output += "C"
+        }
+        if(remainingNumber >= 5){
+            remainingNumber -= 5
+            output += "L"
+        }
+        for (i in 1 .. remainingNumber)
             output += "X"
         return output
     }
