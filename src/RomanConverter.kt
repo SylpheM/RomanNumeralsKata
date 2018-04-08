@@ -1,39 +1,43 @@
+import kotlin.math.min
+
 class RomanConverter {
 
-    fun convert(inputNumber:Int) : String{
-        if (inputNumber > 10) {
-            val tens = inputNumber / 10
-            return "${convertTens(tens)}${convert(inputNumber - tens * 10)}"
-        }
-        return when(inputNumber){
-            0 -> ""
-            1 -> "I"
-            2 -> "II"
-            3 -> "III"
-            4 -> "IV"
-            5 -> "V"
-            6 -> "VI"
-            7 -> "VII"
-            8 -> "VIII"
-            9 -> "IX"
-            10 -> "X"
-            else -> "unsupported"
-        }
-    }
+    data class Reference(val number: Int, val letter: String)
 
-    fun convertTens(inputNumber: Int) : String {
-        var remainingNumber = inputNumber
+    private val references = listOf(
+            Reference(1000, "M"),
+            Reference(500, "D"),
+            Reference(100, "C"),
+            Reference(50, "L"),
+            Reference(10, "X"),
+            Reference(5, "V"),
+            Reference(1, "I")
+    )
+
+    fun convert(inputNumber:Int) : String{
+        var remaining = inputNumber
         var output = ""
-        if(remainingNumber >= 10){
-            remainingNumber -= 10
-            output += "C"
+        while(remaining > 0){
+            for (i in references.indices) {
+                val ref = references[i]
+
+                if (remaining >= ref.number){
+                    output += ref.letter
+                    remaining -= ref.number
+                    break
+                } else {
+                    for (j in i+1 until min(references.size, i + 3) ){
+                        val nextRef = references[j]
+                        val virtualRef = ref.number - nextRef.number
+                        if (remaining >= virtualRef && virtualRef != nextRef.number){
+                            output += nextRef.letter + ref.letter
+                            remaining -= virtualRef
+                            break
+                        }
+                    }
+                }
+            }
         }
-        if(remainingNumber >= 5){
-            remainingNumber -= 5
-            output += "L"
-        }
-        for (i in 1 .. remainingNumber)
-            output += "X"
         return output
     }
 }

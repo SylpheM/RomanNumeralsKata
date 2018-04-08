@@ -88,6 +88,12 @@ class RomanConverterTest {
     }
 
     @Test
+    fun `convert 97 return XCVII`(){
+        val convertedValue = RomanConverter().convert(97)
+        assertThat(convertedValue).isEqualTo("XCVII")
+    }
+
+    @Test
     fun `convert 100 return C`(){
         val convertedValue = RomanConverter().convert(100)
         assertThat(convertedValue).isEqualTo("C")
@@ -97,6 +103,24 @@ class RomanConverterTest {
     fun `convert 168 return CLXVIII`(){
         val convertedValue = RomanConverter().convert(168)
         assertThat(convertedValue).isEqualTo("CLXVIII")
+    }
+
+    @Test
+    fun `convert 388 return CCCLXXXVIII`(){
+        val convertedValue = RomanConverter().convert(388)
+        assertThat(convertedValue).isEqualTo("CCCLXXXVIII")
+    }
+
+    @Test
+    fun `convert 900 return CM`(){
+        val convertedValue = RomanConverter().convert(900)
+        assertThat(convertedValue).isEqualTo("CM")
+    }
+
+    @Test
+    fun `convert 1000 return M`(){
+        val convertedValue = RomanConverter().convert(1000)
+        assertThat(convertedValue).isEqualTo("M")
     }
 
 }
