@@ -25,6 +25,7 @@ class RomanConverter {
                     output += ref.letter
                     remaining -= ref.number
                     break
+
                 } else {
                     for (j in i+1 until min(references.size, i + 3) ){
                         val nextRef = references[j]
