@@ -33,4 +33,34 @@ class RomanConverterTest {
         assertThat(convertedValue).isEqualTo("V")
     }
 
+    @Test
+    fun `convert 6 return VI`(){
+        val convertedValue = RomanConverter().convert(4)
+        assertThat(convertedValue).isEqualTo("IV")
+    }
+
+    @Test
+    fun `convert 7 return VII`(){
+        val convertedValue = RomanConverter().convert(5)
+        assertThat(convertedValue).isEqualTo("V")
+    }
+
+    @Test
+    fun `convert 8 return VIII`(){
+        val convertedValue = RomanConverter().convert(4)
+        assertThat(convertedValue).isEqualTo("IV")
+    }
+
+    @Test
+    fun `convert 9 return IX`(){
+        val convertedValue = RomanConverter().convert(5)
+        assertThat(convertedValue).isEqualTo("V")
+    }
+
+    @Test
+    fun `convert 10 return X`(){
+        val convertedValue = RomanConverter().convert(5)
+        assertThat(convertedValue).isEqualTo("V")
+    }
+
 }

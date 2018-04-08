@@ -1,12 +1,17 @@
 class RomanConverter {
 
-    fun convert(integer:Int) : String{
-        return when(integer){
+    fun convert(inputNumber:Int) : String{
+        return when(inputNumber){
             1 -> "I"
             2 -> "II"
             3 -> "III"
             4 -> "IV"
             5 -> "V"
+            6 -> "VI"
+            7 -> "VII"
+            8 -> "VIII"
+            9 -> "IX"
+            10 -> "X"
             else -> "unsupported"
         }
     }
